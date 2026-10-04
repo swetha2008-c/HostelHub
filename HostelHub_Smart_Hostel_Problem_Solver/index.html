@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HostelHub – Smart Hostel Problem Solver</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home"><span class="brand-mark">H</span><span>Hostel<span>Hub</span></span></a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#report">Report</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#help">Emergency</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">SMART HOSTEL MANAGEMENT</div>
+    <h1>Your Hostel. <span>Your Voice.</span><br>Smarter Solutions.</h1>
+    <p>Report hostel problems, track progress, discover quick solutions, and connect with the right support — all in one place.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#report">＋ Report a Problem</a>
+      <a class="btn secondary" href="#dashboard">View Dashboard →</a>
+    </div>
+    <div class="hero-mini">
+      <span>✓ Easy reporting</span><span>✓ Smart triage</span><span>✓ Real-time tracking</span>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="pulse-orb">🏠</div>
+    <h3>HostelHub Control Center</h3>
+    <p>From report to resolution.</p>
+    <div class="flow">
+      <span>Report</span><b>→</b><span>Triage</span><b>→</b><span>Resolve</span>
+    </div>
+    <div class="live-pill"><i></i> System ready</div>
+  </div>
+</section>
+
+<section class="stats-strip">
+  <div><strong id="heroTotal">0</strong><small>Total Problems</small></div>
+  <div><strong id="heroResolved">0</strong><small>Resolved</small></div>
+  <div><strong id="heroActive">0</strong><small>Active Issues</small></div>
+  <div><strong id="heroHigh">0</strong><small>High Priority</small></div>
+</section>
+
+<section id="report" class="section">
+  <div class="section-heading">
+    <div><span class="eyebrow">STEP 01</span><h2>Report a Problem</h2><p>Tell us what is happening. HostelHub will triage your complaint automatically.</p></div>
+  </div>
+  <div class="form-layout">
+    <form id="problemForm" class="card form-card">
+      <div class="form-grid">
+        <label>Student Name<input id="studentName" required placeholder="Enter your name"></label>
+        <label>Hostel / Block<input id="hostel" required placeholder="e.g. Block A"></label>
+        <label>Room Number<input id="room" required placeholder="e.g. 204"></label>
+        <label>Problem Category
+          <select id="category" required>
+            <option value="">Select category</option>
+            <option>Food / Mess</option><option>Room Maintenance</option><option>Water</option>
+            <option>Electricity</option><option>Wi-Fi / Internet</option><option>Safety & Security</option>
+            <option>Laundry</option><option>Roommate Conflict</option><option>Noise / Study Environment</option>
+            <option>Hostel Rules</option><option>Medical / Emergency</option><option>Other</option>
+          </select>
+        </label>
+        <label>Priority
+          <select id="priority" required>
+            <option>Low</option><option selected>Medium</option><option>High</option><option>Emergency</option>
+          </select>
+        </label>
+      </div>
+      <label>Problem Description<textarea id="description" required rows="5" placeholder="Describe the issue clearly..."></textarea></label>
+      <div id="suggestionPreview" class="suggestion-preview">💡 Select a category to see a quick suggestion.</div>
+      <button class="btn primary full" type="submit">Submit Problem →</button>
+    </form>
+    <aside class="card triage-card">
+      <span class="eyebrow">SMART TRIAGE</span>
+      <h3>What happens next?</h3>
+      <div class="timeline">
+        <div><b>01</b><span><strong>Report</strong><small>Your complaint is recorded.</small></span></div>
+        <div><b>02</b><span><strong>Triage</strong><small>Category and urgency are identified.</small></span></div>
+        <div><b>03</b><span><strong>Review</strong><small>Warden/admin reviews the issue.</small></span></div>
+        <div><b>04</b><span><strong>In Progress</strong><small>Maintenance team works on it.</small></span></div>
+        <div><b>05</b><span><strong>Resolved</strong><small>You can track the final outcome.</small></span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="dashboard" class="section tinted">
+  <div class="section-heading row-between">
+    <div><span class="eyebrow">STEP 02</span><h2>Problem Dashboard</h2><p>Track every complaint from report to resolution.</p></div>
+    <div class="filters"><select id="statusFilter"><option value="All">All Status</option><option>Reported</option><option>Under Review</option><option>In Progress</option><option>Resolved</option></select><select id="categoryFilter"><option value="All">All Categories</option></select></div>
+  </div>
+  <div id="complaintGrid" class="complaint-grid"></div>
+</section>
+
+<section id="analytics" class="section">
+  <div class="section-heading"><span class="eyebrow">STEP 03</span><h2>Hostel Insights</h2><p>Simple analytics help identify recurring hostel problems.</p></div>
+  <div class="analytics-grid">
+    <div class="card metric"><span>Total Problems</span><strong id="totalMetric">0</strong><small>All recorded complaints</small></div>
+    <div class="card metric"><span>Resolved Problems</span><strong id="resolvedMetric">0</strong><small>Successfully completed</small></div>
+    <div class="card metric"><span>Active Problems</span><strong id="activeMetric">0</strong><small>Needs attention</small></div>
+    <div class="card metric"><span>High Priority</span><strong id="highMetric">0</strong><small>High + emergency</small></div>
+  </div>
+  <div class="analytics-bottom">
+    <div class="card category-chart"><h3>Most Reported Categories</h3><div id="bars"></div></div>
+    <div class="card insight-card"><span class="eyebrow">SMART INSIGHT</span><h3 id="topCategory">—</h3><p id="insightText">Submit a few complaints to generate insights.</p><div class="insight-icon">✦</div></div>
+  </div>
+</section>
+
+<section class="section suggestions">
+  <div class="section-heading"><span class="eyebrow">QUICK SUPPORT</span><h2>Smart Suggestions</h2><p>Useful first steps before or after submitting a complaint.</p></div>
+  <div class="suggestion-grid" id="suggestionGrid"></div>
+</section>
+
+<section id="help" class="section emergency">
+  <div>
+    <span class="eyebrow">NEED HELP NOW?</span>
+    <h2>Emergency Help Center</h2>
+    <p>For immediate danger or medical emergencies, contact the appropriate hostel authority or local emergency service.</p>
+  </div>
+  <div class="emergency-actions">
+    <a class="help-btn" href="tel:112">🚨 <span><b>Emergency</b><small>Call 112</small></span></a>
+    <a class="help-btn" href="tel:9999999999">🛡️ <span><b>Security</b><small>Call Security</small></span></a>
+    <a class="help-btn" href="tel:9999999999">👤 <span><b>Warden</b><small>Contact Warden</small></span></a>
+    <a class="help-btn" href="tel:108">⚕️ <span><b>Medical</b><small>Call Medical Help</small></span></a>
+  </div>
+</section>
+</main>
+
+<footer><div class="brand"><span class="brand-mark">H</span><span>Hostel<span>Hub</span></span></div><p>Smart hostel problem solving for better student living.</p><small>© 2026 HostelHub • Hackathon Demo</small></footer>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
